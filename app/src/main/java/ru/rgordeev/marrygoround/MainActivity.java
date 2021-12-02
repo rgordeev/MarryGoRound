@@ -17,6 +17,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Integer catIndex = getIntent().getExtras().getInt("cat_number");
+
+        int resourceId = getApplicationContext()
+                .getResources()
+                .getIdentifier(
+                        cats[catIndex],
+                        "drawable",
+                        getApplicationContext().getPackageName()
+                );
+        ImageView imageView = findViewById(R.id.image);
+        imageView.setImageResource(resourceId);
     }
 
     public void onClick(View view) {

@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Date;
+import java.util.Random;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login;
@@ -35,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (PASSWORD.equals(p) && LOGIN.equals(l)) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+            Integer index = new Random(new Date().getTime()).nextInt(100) % 4;
+            intent.putExtra("cat_number", index);
+
             getApplicationContext().startActivity(intent);
         } else {
             Toast.makeText(getApplicationContext(), "WRONG LOGIN/PASSWORD", LENGTH_SHORT).show();
